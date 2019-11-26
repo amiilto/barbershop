@@ -28,15 +28,18 @@ if(!isset($_SESSION['username'])){
                             <th>Cliente</th>
                             <th>Data</th>
                             <th>Hora</th>
+                            <th>Ações</th>
                         </tr>
                         <?php
                             $con = mysqli_connect('localhost','root');
                             mysqli_select_db($con, 'barbershop');
-                            $sql = "SELECT name, date, time FROM schedule";
+                            $sql = "SELECT id, name, date, time FROM schedule";
                             $result = $con->query($sql);
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo "<tr><td>" . $row["name"]. "</td><td>" . $row["date"] . "</td><td>" . $row["time"] . "</td></tr>";
+                                    echo "<tr><td>" . $row["name"]. "</td><td>" . $row["date"] . "</td><td>" . $row["time"] . "</td>
+                                    <td><a href='functions.php?edit_schedule=" . $row["id"] . "'>Editar</a>
+                                    <a href='functions.php?delete_schedule=" . $row["id"] . "'>Excluir</a>";
                                 }
                             }
                             mysqli_close($con);

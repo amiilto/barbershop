@@ -22,20 +22,24 @@ if(!isset($_SESSION['username'])){
                     ?>
                 </div>
                 <div class="right-panel">
+                    <h3>Clientes</h3>
                     <table class="users-table">
                         <tr>
                             <th>Nome</th>
                             <th>CPF</th>
                             <th>Email</th>
+                            <th>Ações</th>
                         </tr>
                         <?php
                             $con = mysqli_connect('localhost','root');
                             mysqli_select_db($con, 'barbershop');
-                            $sql = "SELECT name, cpf, email FROM clients";
+                            $sql = "SELECT id, name, cpf, email FROM clients";
                             $result = $con->query($sql);
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo "<tr><td>" . $row["name"]. "</td><td>" . $row["cpf"] . "</td><td>" . $row["email"];
+                                    echo "<tr><td>" . $row["name"]. "</td><td>" . $row["cpf"] . "</td><td>" . $row["email"] .
+                                    "<td><a href='functions.php?edit_clients=" . $row["id"] . "'>Editar</a>
+                                    <a href='functions.php?delete_clients=" . $row["id"] . "'>Excluir</a>";
                                 }
                             }
                             mysqli_close($con);

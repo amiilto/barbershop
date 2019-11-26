@@ -49,8 +49,9 @@
                                     echo "<option value='$name'>$name</option>";
                                 }
                             ?>
-                        </select><br>  
-                        <input type="submit" value="Salvar" name="save_sale">
+                        </select><br>
+                        <input type="hidden" value="<?php echo $_GET['id'];?>" name="id">
+                        <input type="submit" value="Salvar" name="edit_sale">
                     </form>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 <div class="menu-area">
     <ul>
-        <li><a href="index.php">Tela Inicial</a></li>
         <li><a href="sales.php">Atendimentos</a></li>
         <li><a href="schedule.php">Agendamentos</a></li>
         <li><a href="products.php">Serviços</a></li>
